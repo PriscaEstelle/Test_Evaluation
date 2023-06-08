@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="ks_ebook.list">
+      <field name="name">res_ebook list</field>
+      <field name="model">res.ebook</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="reference"/>
+          <field name="title"/>
+          <field name="creation_date"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+     <!-- explicit form view definition -->
+
+     <record id="res_ebook_view_form" model="ir.ui.view">
+      <field name="name">New</field>
+      <field name="model">res.ebook</field>
+      <field name="arch" type="xml">
+        <form string="Add">
+          <header>
+            <button name="Publish" type="object" class="oe_highlight" string="Publish"/>
+            <button name="canceled" type="object" class="oe_highlight" string="Canceled"/>
+            <button name="Draft" type="object" class="oe_highlight" string="Draft"/>
+          </header>
+            <group>
+              <group>
+                <field name="reference"/>
+                <field name="title"/>
+                <field name="description"/>
+                <field name="file"/>
+                <field name="file_name"/>
+                <field name="banner"/>
+                <field name="added_by"/>
+                <field name="creation_date"/>
+                <field name="state"/>
+              </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+     <!-- action view    -->
+    <record model="ir.actions.act_window" id="ks_ebook_res_ebook_action1">
+      <field name="name">Publish</field>
+      <field name="res_model">res.ebook</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+     <!-- Top menu item -->
+    <menuitem name="Ebook" id="res_ebook_menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Publish"
+              id="res_ebook_menu_1"
+              parent="res_ebook_menu_root"
+              action="ks_ebook_res_ebook_action1"/>
+  </data>
+</odoo>
